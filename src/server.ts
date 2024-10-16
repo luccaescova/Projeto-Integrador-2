@@ -1,6 +1,7 @@
 import express from "express";
 import {Request, Response, Router} from "express";
 import { AccountsHandler } from "./accounts/accounts";
+import { login } from './accounts/accounts';
 
 const port = 3000; 
 const server = express();
@@ -15,9 +16,13 @@ routes.get('/', (req: Request, res: Response)=>{
 
 // vamos organizar as rotas em outro local 
 routes.put('/signUp', AccountsHandler.createAccountRoute);
+routes.post('/login', login);
+export default routes;
 
 server.use(routes);
 
 server.listen(port, ()=>{
     console.log(`Server is running on: ${port}`);
 })
+
+

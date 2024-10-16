@@ -83,5 +83,17 @@ export namespace AccountsHandler {
           return user;
         }
       }
+      export const login = (req: Request, res: Response) => {
+        const { email, password } = req.body;
+    
+        // Verifica se o usuário existe
+        const user = users.find(a => a.email === email && a.password === password);
+    
+        if (user) {
+            return res.status(200).json({ message: 'Login bem-sucedido!' });
+        } else {
+            return res.status(401).json({ message: 'Credenciais inválidas!' });
+        }
+    };
 
 }
