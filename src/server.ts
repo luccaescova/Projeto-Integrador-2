@@ -1,28 +1,25 @@
-import express from "express";
-import {Request, Response, Router} from "express";
-import { AccountsHandler } from "./accounts/accounts";
-import { login } from './accounts/accounts';
+import express from 'express';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
+import authRoutes from './routes/auth';
+import eventRoutes from './routes/events';
+import betRoutes from './routes/bets';
 
-const port = 3000; 
-const server = express();
-const routes = Router();
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-// definir as rotas. 
-// a rota tem um verbo/método http (GET, POST, PUT, DELETE)
-routes.get('/', (req: Request, res: Response)=>{
-    res.statusCode = 403;
-    res.send('Acesso não permitido.');
+// Conexão com o MongoDB
+mongoose.connect('mongodb://localhost:27017/apostas', { useNewUrlParser: true, useUnifiedTopology: true });
+
+// Middleware
+app.use(bodyParser.json());
+
+// Rotas
+app.use('/auth', authRoutes);
+app.use('/events', eventRoutes);
+app.use('/bets', betRoutes);
+
+// Iniciar o servidor
+app.listen(PORT, () => {
+    console.log(Servidor rodando na porta ${PORT});
 });
-
-// vamos organizar as rotas em outro local 
-routes.put('/signUp', AccountsHandler.createAccountRoute);
-routes.post('/login', login);
-export default routes;
-
-server.use(routes);
-
-server.listen(port, ()=>{
-    console.log(`Server is running on: ${port}`);
-})
-
-
