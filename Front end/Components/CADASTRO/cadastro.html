@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Hakari's Bet</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="main.js"></script>
+</head>
+<body>
+    
+<div class = "container">
+    <h1>Cadatro de Usuário</h1>
+    
+    <form onsubmit="event.preventDefault(); performsingin();" class = "fundo">
+        <p>
+            <label for="fieldName">Nome:</label>
+            <input type="text" id="fieldName" required class="inputs">
+        </p>
+        <p>
+            <label for="fieldLastname">Sobrenome: </label>
+            <input type="text" id="fieldLastname" required class="inputs">
+        </p>
+        <p>
+            <label for="fielsSexo"> Sexo </label><br>
+            <input type ="radio" name="sexo"> Masculino
+            <input type ="radio" name="sexo"> Feminino 
+            <input type ="radio" name="sexo"> Prefiro não diser
+        </p>
+        <p>
+            <label for ="fieldDate">Data de nacimento: </label>
+            <input type = "date" id = "fieldDate" required class = "inputs">
+        </p>  
+        <p>
+            <label for = "fieldPhone">Telefone: </label>
+            <input type = "number" id = "fieldPhone" required class = "inputs">
+        </p>
+        <p>
+            <label for="fieldEmail">Email:</label>
+            <input type="text" id="fieldEmail" required class="inputs">
+        </p>
+        <p>
+            <label for="fieldPassword">Senha: </label>
+            <input type="password" id="fieldPassword" required class="inputs">
+        </p>
+        <p>
+            <label for="fieldPasswordConfirm"> Confirme a Senha: </label>
+            <input type="password" id="fieldPasswordConfirm" required class="inputs">
+        </p>      
+        <button id="btnLogin" type="button" onclick="performLogin()" class = "button">Ok</button>
+    </form>
+</div>
+    
+    
+</body>
+</html>

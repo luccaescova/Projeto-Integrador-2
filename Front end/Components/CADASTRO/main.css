@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(158, 184, 201, 0.767) ;
+    
+    
+}
+
+.container {
+
+    background-color: rgba(117, 173, 211, 0.767) ; 
+    padding: 20px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    
+}
+
+button{
+    border-radius: 50px;
+    background-color: #08d8f3;
+    
+    
+}
+.inputs{
+    border-radius: 5px;
+}
+
+#messageBox {
+    background-color: rgba(224, 67, 67, 0.541);
+    border: 3px solid rgba(255, 0, 0, 0.342);
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    display: none;
+}
+#messageBox p {
+    padding: 10px;
+    margin: 0;
+}
