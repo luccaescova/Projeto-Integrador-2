@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakari's Bet</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="main.js"></script>
+    
+    <script>
+        
+    </script>
+</head>
+<body>
+    <div class = "container">
+      <h1>Login</h1>
+    <form onsubmit="event.preventDefault(); performLogin();" class = "fundo">
+        <p>
+            <label for="fieldEmail">Email:</label><br>
+            <input type="text" id="fieldEmail" required class="inputs">
+        </p>
+        <p>
+            <label for="fieldPassword">Senha:</label><br>
+            <input type="password" id="fieldPassword" required class="inputs">
+        </p>
+        <button id="btnLogin" type="button" onclick="performLogin()" class = "button">Entrar</button>
+        <button id="btnLogin" type="button" onclick="performLogin()" class = "button">Cadastrar</button>
+        <div id="messageBox">
+            <p id="message"></p>
+        </div>
+    </form>
+    </div>
+    
+</body>
+</html>
