@@ -1,19 +1,29 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, BaseEntity } from "typeorm";
+import { User } from "./User";
 
-interface IEvent extends Document {
-    name: string;
+@Entity()
+export class Event extends BaseEntity {
+    @PrimaryGeneratedColumn()
+    id: number;
+
+    @Column({ length: 50 })
+    title: string;
+
+    @Column({ length: 150 })
+    description: string;
+
+    @Column("decimal", { precision: 10, scale: 2 })
+    betAmount: number;
+
+    @Column("timestamp")
+    startDate: Date;
+
+    @Column("timestamp")
+    endDate: Date;
+
+    @Column({ default: "pending" }) // Status: pending, approved, rejected, deleted
     status: string;
-    date: Date;
-    owner: mongoose.Schema.Types.ObjectId;
-    bets: Array<{ user: mongoose.Schema.Types.ObjectId; amount: number }>;
+
+    @ManyToOne(() => User, (user) => user.id)
+    creator: User;
 }
-
-const eventSchema: Schema = new Schema({
-    name: { type: String, required: true },
-    status: { type: String, default: 'pending' }, // 'pending', 'approved', 'finished'
-    date: { type: Date, required: true },
-    owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User ' },
-    bets: [{ user: { type: mongoose.Schema.Types.ObjectId, ref: 'User ' }, amount: Number }]
-});
-
-export default mongoose.model<IEvent>('Event', eventSchema);

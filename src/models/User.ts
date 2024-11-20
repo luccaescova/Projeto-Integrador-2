@@ -1,15 +1,22 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm";
 
-interface IUser extends Document {
+@Entity()
+export class User extends BaseEntity {
+    @PrimaryGeneratedColumn()
+    id: number;
+
+    @Column({ unique: true })
     email: string;
+
+    @Column()
     password: string;
-    balance: number;
+
+    @Column()
+    name: string;
+
+    @Column({ default: 0 })
+    walletBalance: number;
+
+    @Column({ default: false })
+    isModerator: boolean;
 }
-
-const userSchema: Schema = new Schema({
-    email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
-    balance: { type: Number, default: 0 }
-});
-
-export default mongoose.model<IUser >('User ', userSchema);
